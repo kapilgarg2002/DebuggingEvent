@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const moongoose = require("mongoose");
 
+moongoose.connect("https://localhost/27017/Colloquim",{
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 
 //Setting things up
 const app = express();
