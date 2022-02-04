@@ -122,21 +122,21 @@ app.post("/register",function(req,res){
 });
 
 app.post("/checkAnswer1",function(req,res){
-  if(answers.answer1 === req.body.answer)
+  if(answers.answer1 == req.body.answer)
    res.render("dashboard",{all ok part 1});
   else 
    res.render("wrongAnswer");
 });
 
 app.post("/checkAnswer2",function(req,res){
-  if(answers.answer2 === req.body.answer)
+  if(answers.answer2 == req.body.answer)
    res.render("dashboard",{all ok part 2});
   else 
    res.render("wrongAnswer");
 });
 
 app.post("/checkAnswer3",function(req,res){
-  if(answers.answer3 === req.body.answer)
+  if(answers.answer3 == req.body.answer)
    res.render("dashboard",{all ok part 3});
   else 
    res.render("wrongAnswer");
