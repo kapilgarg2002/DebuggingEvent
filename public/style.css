@@ -1,0 +1,22 @@
+.red::before
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 0, 0, 0.568);
+    content: "";
+    opacity: 0.8;
+}
+.green::before
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: green;
+    content: "";
+    opacity: 0.8;  
+}
