@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const moongoose = require("mongoose");
 
-moongoose.connect("https://localhost//27017/Colloquim",{
+moongoose.connect("https://localhost/27017/Colloquim",{
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
@@ -68,6 +68,57 @@ app.post("/", (req, res) => {
       })
     }
   });
+});
+
+app.post("/register",function(req,res){
+  const teamMember1 = {
+    name:req.body.teamMember1Name,
+    phone:req.body.teamMember1Phone,
+    email:req.body.teamMember1Email
+  };
+  const teamMember2 = {
+    name:req.body.teamMember2Name,
+    phone:req.body.teamMember2Phone,
+    email:req.body.teamMember2Email
+  };  
+  const teamMember3 = {
+    name:req.body.teamMember3Name,
+    phone:req.body.teamMember3Phone,
+    email:req.body.teamMember3Email
+  };
+  const tempUser=new debug({
+    teamName:req.body.teamName,
+    password:req.body.password,
+    teamMember1:teamMember1,
+    teamMember2:teamMember2,
+    teamMember3:teamMember3,
+    collegeName:req.body.college,
+    answer1:false,
+    answer2:false,
+    answer3:false
+  });
+  debug.findOne({teamName:req.body.teamName},(err,result)=>
+  {
+    if(!err)
+    {
+      if(result)
+      {
+        res.send("Early Bird Catches the Worm!!<br><h1>Naya Team Name Socho</h1>");
+      }
+      else
+      {
+        tempUser.save((err)=>
+        {
+          if(!err) console.log("Success");
+          else console.log("Failure");
+        });
+      }
+    }
+    else
+    {
+      res.send("Error-Page");
+    }
+  })
 });
 
 app.post("/checkAnswer1",function(req,res){
