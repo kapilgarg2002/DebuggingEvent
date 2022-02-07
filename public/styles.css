@@ -61,7 +61,7 @@
     background-image: url("website_background.png");
     background-size: cover;
     background-repeat: no-repeat;
-    /* height: 100%; */
+    overflow-x: hidden;
     font-family: "Numans", sans-serif;
   }
   
