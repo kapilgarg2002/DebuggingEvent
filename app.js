@@ -103,7 +103,7 @@ app.post("/register",function(req,res){
   };
   const tempUser=new debug({
     teamName:req.body.teamName,
-    password:req.body.password,
+    password:req.body.password.trim(),
     teamMember1:teamMember1,
     teamMember2:teamMember2,
     teamMember3:teamMember3,
@@ -129,13 +129,13 @@ app.post("/register",function(req,res){
             console.log("Success");
             res.send("Register Success");
           }
-          else console.log("Failure");
+          else res.render("error");
         });
       }
     }
     else
     {
-      res.send("Error-Page");
+      res.render("error");
     }
   })
 });
