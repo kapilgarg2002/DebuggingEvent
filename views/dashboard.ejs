@@ -4,74 +4,79 @@
 </div>
 <div class="row">
     <!-- Easy -->
-    <div class="col-5 gen <%=className1%>" style="background-size: 100% 100%;" type="button" data-toggle="modal" data-target="#easy">
+    <div class="col-5  <%=className1%>"  >
+      <img src="left.png"  data-bs-toggle="modal" data-bs-target="#easy" alt="">
     </div>
     <!-- Medium -->
-    <div class="col-7 gen <%=className2%>" style="border-left: solid 4px black; background-size: 100% 100%;" data-toggle="modal" data-target="#medium">
+    <div class="col-7  <%=className2%>">
+      <img src="right.png" data-bs-toggle="modal" data-bs-target="#medium" alt="">
     </div>
     <!-- Hard -->
-    <div class="col-12 gen <%=className3%>" style="border-top: solid 4px black; background-size: 100% 100%;" data-toggle="modal" data-target="#hard">
+    <div class="col-12  <%=className3%>" >
+      <img src="bott.png" data-bs-toggle="modal" data-bs-target="#hard" alt="">
     </div>
 </div>
 
 <!-- Modals -->
 
-<!-- <div class="modal fade" id="easy" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="easy">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="" method="post"></form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+<div class="modal fade" id="easy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Easy Question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/checkAnswer1" method="post">
+          <label for="output">Output</label>
+          <input type="text" name="answer">
+          <input type="hidden" value="<%=teamName%>" name="teamName">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-warning">check Answer</button>
+        </form>
       </div>
     </div>
-</div> -->
-<!---
-<div class="modal fade" id="medium" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="" method="post"></form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
+  </div>
 </div>
-<div class="modal fade" id="hard" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="" method="post"></form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+<div class="modal fade" id="medium" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Medium Question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/checkAnswer2" method="post">
+          <label for="output">Output</label>
+          <input type="text" name="answer">
+          <input type="hidden" value="<%=teamName%>" name="teamName">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-warning">check Answer</button>
+        </form>
       </div>
     </div>
-</div> -->
+  </div>
+</div>
+<div class="modal fade" id="hard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hard Question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/checkAnswer3" method="post">
+          <label for="output">Output</label>
+          <input type="text" name="answer">
+          <input type="hidden" value="<%=teamName%>" name="teamName">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-warning">check Answer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <%-include("partials/footer")-%>

@@ -3,12 +3,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const moongoose = require("mongoose");
-const { redirect } = require("express/lib/response");
+// const { redirect } = require("express/lib/response");
 
-moongoose.connect("mongodb://localhost:27017/Colloquim",{
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
+
+
+
+
+moongoose.connect("mongodb+srv://kapil:kapil@cluster0.jxchm.mongodb.net/Colloquim"||"mongodb://localhost:27017/Colloquim",{ useNewUrlParser: true, useUnifiedTopology: true });
 
 //Setting things up
 const app = express();
@@ -41,9 +42,9 @@ const questions={
 };
 
 const answers={
-  answer1:"",
-  answer2:"",
-  answer3:"",
+  answer1:"1",
+  answer2:"2",
+  answer3:"3",
 };
 
 let data={
@@ -66,9 +67,9 @@ app.post("/", (req, res) => {
   console.log(roll);
   debug.findOne({ teamName: username, password: roll }, function (err, result) {
     if (result) {
-      if(result.answer1) data.className1 = "green";
-      if(result.answer2) data.className2 = "green";
-      if(result.answer3) data.className3 = "green";
+      (result.answer1)?data.className1 = "green":data.className1 = "red";
+      (result.answer2)?data.className2 = "green":data.className1 = "red";
+      result.answer3?data.className3 = "green":data.className1 = "red";
       data.teamName = username;
       res.render("dashboard",data);
     } 
@@ -140,28 +141,97 @@ app.post("/register",function(req,res){
   })
 });
 
-// app.post("/checkAnswer1",function(req,res){
-//   if(answers.answer1 == req.body.answer)
-//    res.render("dashboard",{all ok part 1});
-//   else 
-//    res.render("wrongAnswer");
-// });
+app.post("/checkAnswer1",function(req,res){
+  
+  debug.findOne({teamName:req.body.teamName},(err,result)=>{
+    if(!err)
+    {
+      data.teamName = req.body.teamName;
+      console.log(req.body.answer);
+      if(answers.answer1 == req.body.answer)
+       {
+         console.log("here");
+        debug.findOneAndUpdate({teamName:req.body.teamName},{answer1:true},{returnOriginal: false}, function(err,doc){
+            if(err){
+              console.log(err);
+            } else{
+              console.log(doc);
+            }
+          });
+        debug.findOne({teamName:req.body.teamName},(err,response)=>{
+          (response.answer1)?data.className1 = "green":data.className1 = "red";
+          (response.answer2)?data.className2 = "green":data.className1 = "red";
+          response.answer3?data.className3 = "green":data.className1 = "red";
+        });
+        res.render("dashboard",data);
+       }
+       else 
+        res.render("dashboard",data);
+    }
+  });
+});
 
-// app.post("/checkAnswer2",function(req,res){
-//   if(answers.answer2 == req.body.answer)
-//    res.render("dashboard",{all ok part 2});
-//   else 
-//    res.render("wrongAnswer");
-// });
+app.post("/checkAnswer2",function(req,res){
 
-// app.post("/checkAnswer3",function(req,res){
-//   if(answers.answer3 == req.body.answer)
-//    res.render("dashboard",{all ok part 3});
-//   else 
-//    res.render("wrongAnswer");
-// });
+  debug.findOne({teamName:req.body.teamName},(err,result)=>{
+    if(!err)
+    {
+      data.teamName = req.body.teamName;
+      console.log(req.body.answer);
+      if(answers.answer2 == req.body.answer)
+       {
+         console.log("here");
+        debug.findOneAndUpdate({teamName:req.body.teamName},{answer2:true},{returnOriginal: false}, function(err,doc){
+            if(err){
+              console.log(err);
+            } else{
+              console.log(doc);
+            }
+          });
+        debug.findOne({teamName:req.body.teamName},(err,response)=>{
+          (response.answer1)?data.className1 = "green":data.className1 = "red";
+          (response.answer2)?data.className2 = "green":data.className1 = "red";
+          response.answer3?data.className3 = "green":data.className1 = "red";
+        });
+        res.render("dashboard",data);
+       }
+       else 
+        res.render("dashboard",data);
+    }
+  });
+});
+app.post("/checkAnswer3",function(req,res){
+  
+  debug.findOne({teamName:req.body.teamName},(err,result)=>{
+    if(!err)
+    {
+      data.teamName = req.body.teamName;
+      console.log(req.body.answer);
+      if(answers.answer3 == req.body.answer)
+       {
+         console.log("here");
+        debug.findOneAndUpdate({teamName:req.body.teamName},{answer3:true},{returnOriginal: false}, function(err,doc){
+            if(err){
+              console.log(err);
+            } else{
+              console.log(doc);
+            }
+          });
+        debug.findOne({teamName:req.body.teamName},(err,response)=>{
+          (response.answer1)?data.className1 = "green":data.className1 = "red";
+          (response.answer2)?data.className2 = "green":data.className1 = "red";
+          response.answer3?data.className3 = "green":data.className1 = "red";
+        });
+        res.render("dashboard",data);
+       }
+       else 
+        res.render("dashboard",data);
+    }
+  });
+});
+
 
 //Server Initialisation
-app.listen(process.env.PORT||3000, (req, res) => {
-  console.log("Server Up and running at port 3000");
+app.listen(process.env.PORT||4000, (req, res) => {
+  console.log("Server Up and running at port 4000");
 });
