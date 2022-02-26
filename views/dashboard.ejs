@@ -1,82 +1,146 @@
-<%-include("partials/header")-%>
-<div>
-  <h1><%=teamName%></h1>
-</div>
-<div class="row">
-    <!-- Easy -->
-    <div class="col-5  <%=className1%>"  >
-      <img src="left.png"  data-bs-toggle="modal" data-bs-target="#easy" alt="">
-    </div>
-    <!-- Medium -->
-    <div class="col-7  <%=className2%>">
-      <img src="right.png" data-bs-toggle="modal" data-bs-target="#medium" alt="">
-    </div>
-    <!-- Hard -->
-    <div class="col-12  <%=className3%>" >
-      <img src="bott.png" data-bs-toggle="modal" data-bs-target="#hard" alt="">
-    </div>
-</div>
+<!-- flip-card-container -->
+<link rel="stylesheet" href="card.css">
+<div class="flip-card-container " style="--hue: 350">
+    <div class="flip-card <%=className1%>">
 
-<!-- Modals -->
+        <div class="card-front">
+            <figure>
+                <div class="img-bg"></div>
+                <img src="easy.png"
+                    alt="Brohm Lake">
+                <figcaption>easy</figcaption>
+            </figure>
+            <form action="/checkAnswer1" method="post">
+                <ul>
+                    <li><label for="output">Your Output</label><input type="text" name="answer"></li>
+                    <li><input type="hidden" value="<%=teamName%>" name="teamName"><button type="submit" class="btn btn-warning">check Answer</button></li>
+                    <li style="color: red;"><%=wans1%> </li>
+                    
+                </ul>
+            </form>
+        </div>
 
-<div class="modal fade" id="easy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Easy Question</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="/checkAnswer1" method="post">
-          <label for="output">Output</label>
-          <input type="text" name="answer">
-          <input type="hidden" value="<%=teamName%>" name="teamName">
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-warning">check Answer</button>
-        </form>
-      </div>
+        <div class="card-back">
+            <figure>
+                <div class="img-bg"></div>
+                <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    alt="Brohm Lake">
+            </figure>
+
+            <button>Done</button>
+
+            <div class="design-container">
+                <span class="design design--1"></span>
+                <span class="design design--2"></span>
+                <span class="design design--3"></span>
+                <span class="design design--4"></span>
+                <span class="design design--5"></span>
+                <span class="design design--6"></span>
+                <span class="design design--7"></span>
+                <span class="design design--8"></span>
+            </div>
+        </div>
+
     </div>
-  </div>
 </div>
-<div class="modal fade" id="medium" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Medium Question</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="/checkAnswer2" method="post">
-          <label for="output">Output</label>
-          <input type="text" name="answer">
-          <input type="hidden" value="<%=teamName%>" name="teamName">
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-warning">check Answer</button>
-        </form>
-      </div>
+<!-- /flip-card-container -->
+
+<!-- flip-card-container -->
+<div class="flip-card-container" style="--hue: 350">
+    <div class="flip-card <%=className2%>">
+
+        <div class="card-front">
+            <figure>
+                <div class="img-bg"></div>
+                <img src="medium.png"
+                    alt="Image 2">
+                <figcaption>medium</figcaption>
+            </figure>
+
+            <form action="/checkAnswer2" method="post">
+                <ul>
+                    <li><label for="output">Your Output</label><input type="text" name="answer"></li>
+                    <li><input type="hidden" value="<%=teamName%>" name="teamName"><button type="submit"
+                            class="btn btn-warning">check Answer</button></li>
+                    <li style="color: red;"><%=wans2%></li>
+            
+                </ul>
+            </form>
+        </div>
+
+        <div class="card-back">
+            <figure>
+                <div class="img-bg"></div>
+                <img src="https://images.unsplash.com/photo-1545436864-cd9bdd1ddebc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    alt="image-2">
+            </figure>
+
+            <button>Done</button>
+
+            <div class="design-container">
+                <span class="design design--1"></span>
+                <span class="design design--2"></span>
+                <span class="design design--3"></span>
+                <span class="design design--4"></span>
+                <span class="design design--5"></span>
+                <span class="design design--6"></span>
+                <span class="design design--7"></span>
+                <span class="design design--8"></span>
+            </div>
+        </div>
+
     </div>
-  </div>
 </div>
-<div class="modal fade" id="hard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Hard Question</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="/checkAnswer3" method="post">
-          <label for="output">Output</label>
-          <input type="text" name="answer">
-          <input type="hidden" value="<%=teamName%>" name="teamName">
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-warning">check Answer</button>
-        </form>
-      </div>
+<!-- /flip-card-container -->
+
+<!-- flip-card-container -->
+<div class="flip-card-container" style="--hue: 350">
+    <div class="flip-card <%=className3%>">
+
+        <div class="card-front">
+            <figure>
+                <div class="img-bg"></div>
+                <img src="hard.png"
+                    alt="Brohm Lake">
+                <figcaption>hard</figcaption>
+            </figure>
+
+            <form action="/checkAnswer3" method="post">
+                <ul>
+                    <li><label for="output">Your Output</label><input type="text" name="answer"></li>
+                    <li><input type="hidden" value="<%=teamName%>" name="teamName"><button type="submit"
+                            class="btn btn-warning">check Answer</button></li>
+                    <li style="color: red;">
+                        <%=wans3%>
+                    </li>
+                    
+                </ul>
+            </form>
+        </div>
+
+        <div class="card-back">
+            <!-- only if the image is necessary -->
+            <figure>
+                <div class="img-bg"></div>
+                <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    alt="Brohm Lake">
+            </figure>
+
+            <button>Done</button>
+
+            <!-- can add svg here and remove these eight spans -->
+            <div class="design-container">
+                <span class="design design--1"></span>
+                <span class="design design--2"></span>
+                <span class="design design--3"></span>
+                <span class="design design--4"></span>
+                <span class="design design--5"></span>
+                <span class="design design--6"></span>
+                <span class="design design--7"></span>
+                <span class="design design--8"></span>
+            </div>
+        </div>
+
     </div>
-  </div>
 </div>
-<%-include("partials/footer")-%>
+<!-- /flip-card-container -->

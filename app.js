@@ -49,9 +49,12 @@ const answers={
 
 let data={
   teamName: " ",
-  className1:"red",
-  className2:"red",
-  className3:"red"
+  className1:"",
+  className2:"",
+  className3:"",
+  wans1:"",
+  wans2:"",
+  wans3:""
 };
 
 const debug = moongoose.model("debug",user);
@@ -68,8 +71,8 @@ app.post("/", (req, res) => {
   debug.findOne({ teamName: username, password: roll }, function (err, result) {
     if (result) {
       (result.answer1)?data.className1 = "green":data.className1 = "red";
-      (result.answer2)?data.className2 = "green":data.className1 = "red";
-      result.answer3?data.className3 = "green":data.className1 = "red";
+      (result.answer2)?data.className2 = "green":data.className2 = "red";
+      result.answer3?data.className3 = "green":data.className3 = "red";
       data.teamName = username;
       res.render("dashboard",data);
     } 
@@ -155,18 +158,31 @@ app.post("/checkAnswer1",function(req,res){
             if(err){
               console.log(err);
             } else{
-              console.log(doc);
+
+              // console.log(doc);
             }
           });
         debug.findOne({teamName:req.body.teamName},(err,response)=>{
+          console.log(response);
           (response.answer1)?data.className1 = "green":data.className1 = "red";
-          (response.answer2)?data.className2 = "green":data.className1 = "red";
-          response.answer3?data.className3 = "green":data.className1 = "red";
+          (response.answer2)?data.className2 = "green":data.className2 = "red";
+          (response.answer3)?data.className3 = "green":data.className3 = "red";
+          res.render("dashboard",data);
         });
-        res.render("dashboard",data);
+        console.log(data);
+        
        }
-       else 
-        res.render("dashboard",data);
+       else {
+         data.wans1="wrong answer";
+         debug.findOne({teamName:req.body.teamName},(err,response)=>{
+            console.log(response);
+            (response.answer1)?data.className1 = "green":data.className1 = "red";
+            (response.answer2)?data.className2 = "green":data.className2 = "red";
+            (response.answer3)?data.className3 = "green":data.className3 = "red";
+            res.render("dashboard",data);
+          });
+       }
+        
     }
   });
 });
@@ -190,13 +206,22 @@ app.post("/checkAnswer2",function(req,res){
           });
         debug.findOne({teamName:req.body.teamName},(err,response)=>{
           (response.answer1)?data.className1 = "green":data.className1 = "red";
-          (response.answer2)?data.className2 = "green":data.className1 = "red";
-          response.answer3?data.className3 = "green":data.className1 = "red";
+          (response.answer2)?data.className2 = "green":data.className2 = "red";
+          (response.answer3)?data.className3 = "green":data.className3 = "red";
+          res.render("dashboard",data);
         });
-        res.render("dashboard",data);
+        
        }
-       else 
-        res.render("dashboard",data);
+       else {
+         data.wans2="wrong answer";
+         debug.findOne({teamName:req.body.teamName},(err,response)=>{
+            console.log(response);
+            (response.answer1)?data.className1 = "green":data.className1 = "red";
+            (response.answer2)?data.className2 = "green":data.className2 = "red";
+            (response.answer3)?data.className3 = "green":data.className3 = "red";
+            res.render("dashboard",data);
+          });
+       }
     }
   });
 });
@@ -219,13 +244,22 @@ app.post("/checkAnswer3",function(req,res){
           });
         debug.findOne({teamName:req.body.teamName},(err,response)=>{
           (response.answer1)?data.className1 = "green":data.className1 = "red";
-          (response.answer2)?data.className2 = "green":data.className1 = "red";
-          response.answer3?data.className3 = "green":data.className1 = "red";
+          (response.answer2)?data.className2 = "green":data.className2 = "red";
+          response.answer3?data.className3 = "green":data.className3 = "red";
+          res.render("dashboard",data);
         });
-        res.render("dashboard",data);
+        
        }
-       else 
-        res.render("dashboard",data);
+       else {
+         data.wans3="wrong answer";
+         debug.findOne({teamName:req.body.teamName},(err,response)=>{
+            console.log(response);
+            (response.answer1)?data.className1 = "green":data.className1 = "red";
+            (response.answer2)?data.className2 = "green":data.className2 = "red";
+            (response.answer3)?data.className3 = "green":data.className3 = "red";
+            res.render("dashboard",data);
+          });
+       }
     }
   });
 });

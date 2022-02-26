@@ -100,7 +100,7 @@
   
   .input-group-prepend span {
     width: 50px;
-    background-color: #e52a19;
+    background-color: #1abc9c;
     color: hsl(0deg 62% 7%);
     border: 0 !important;
   }
@@ -123,7 +123,7 @@
   
   .login_btn {
     color: black;
-    background-color: #e52a19;
+    background-color: #1abc9c;
     width: 100px;
   }
   
