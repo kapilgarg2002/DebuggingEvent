@@ -42,9 +42,9 @@ const questions={
 };
 
 const answers={
-  answer1:"1",
-  answer2:"2",
-  answer3:"3",
+  answer1:"Saturday, March 1, 2022",
+  answer2:"5",
+  answer3:"2 1 4 3 6 5 7",
 };
 
 let data={
@@ -209,7 +209,7 @@ app.post("/checkAnswer2",function(req,res){
           (response.answer2)?data.className2 = "green":data.className2 = "red";
           (response.answer3)?data.className3 = "green":data.className3 = "red";
           res.render("dashboard",data);
-        });
+        }); 
         
        }
        else {
